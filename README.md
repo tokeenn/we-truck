@@ -18,6 +18,7 @@ php installer.php
 
 Une fois l'installation terminée, vous devriez pouvoir exécuter la commande `composer` dans votre terminal pour vérifier que Composer est correctement installé. Si tout fonctionne, vous devriez voir une liste des commandes disponibles avec Composer.
 ### Eslint
+Il est important d'avoir un code clean pour que n'importe qu'elle personne qui passe derrière puisse le comprendre et/ou le modifier dans un environnement propre. Eslint est un plug in qui va vous corriger quand vous aurez des erreurs de syntaxe ou par soucis de clarité dans votre code.
 
 ## Installation
 
