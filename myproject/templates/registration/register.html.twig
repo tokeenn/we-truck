@@ -21,4 +21,7 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
+    {% if passError is defined %}
+        <div class="alert alert-danger" role="alert">{{ passError }}</div>
+{% endif %}
 {% endblock %}
