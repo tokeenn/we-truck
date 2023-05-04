@@ -8,13 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+ <h1>News :</h1>
 
-    This friendly message is coming from:
     <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/php/we-truck/myproject/src/Controller/ActivitesController.php'|file_link(0) }}">src/Controller/ActivitesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/php/we-truck/myproject/templates/activites/index.html.twig'|file_link(0) }}">templates/activites/index.html.twig</a></code></li>
+        {% for item in loadFeed %}
+            <li>{{ item.title }}</li>
+            <li>{{ item.category }}</li>
+            <li>{{ item.desc }}</li>
+            <li>{{ item.date }}</li>
+            <li><a href="{{ item.link }}">{{ item.link }}</a></li>
+            <br>
+        {% endfor %}
     </ul>
-</div>
 {% endblock %}
