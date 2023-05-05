@@ -36,64 +36,35 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setRoles(['ROLE_ENTREPRISE']);
-            $user->setPassword(
-                $userPasswordHasher->hashPassword(
+            if (
+                $form->get('plainPassword')->getData() ===
+                $form->get('confirmPassword')->getData()
+            ) {
+                $user->setRoles(['ROLE_ENTREPRISE']);
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $form->get('plainPassword')->getData()
+                    )
+                );
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $userAuthenticator->authenticateUser(
                     $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+                    $authenticator,
+                    $request
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('hamza@we-truck.fr', 'Direction Weeetruck'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
-        }
-        if($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData() ){
-            $entityManager->persist($user);
-            $entityManager->flush();
+                );
+            }
         } else {
             return $this->render('registration/register.html.twig', [
                 'registrationForm' => $form->createView(),
-                'passError' => 'Les mots de pass ne sont pas identiques'
-    ]);
-}
+                'passError' => "Les mots de passe ne sont pas indentiques",
+
+            ]);
+        }
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-    }
-
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
-    {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
-            return $this->redirectToRoute('app_register');
-        }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
-
-        return $this->redirectToRoute('app_entreprise');
     }
 }
