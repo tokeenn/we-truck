@@ -20,13 +20,6 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
 class RegistrationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
-
-    public function __construct(EmailVerifier $emailVerifier)
-    {
-        $this->emailVerifier = $emailVerifier;
-    }
-
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, EntrepriseAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
@@ -34,12 +27,11 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
+        $passError = null;
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            if (
-                $form->get('plainPassword')->getData() ===
-                $form->get('confirmPassword')->getData()
-            ) {
+            if ($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()) {
                 $user->setRoles(['ROLE_ENTREPRISE']);
                 $user->setPassword(
                     $userPasswordHasher->hashPassword(
@@ -49,22 +41,22 @@ class RegistrationController extends AbstractController
                 );
                 $entityManager->persist($user);
                 $entityManager->flush();
+
                 return $userAuthenticator->authenticateUser(
                     $user,
                     $authenticator,
                     $request
-
                 );
+            } else {
+                $passError = "Les mots de passe ne sont pas identiques";
             }
-        } else {
-            return $this->render('registration/register.html.twig', [
-                'registrationForm' => $form->createView(),
-                'passError' => "Les mots de passe ne sont pas indentiques",
-
-            ]);
         }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'passError' => $passError,
         ]);
     }
 }
+
+

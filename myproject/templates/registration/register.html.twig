@@ -16,9 +16,9 @@
 	{{ form_row(registrationForm.confirmPassword, {
             label: 'Confirm Password'
         }) }}
-        {% if passError is defined %}
-		<div class="alert alert-danger" role="alert">{{ passError }}</div>
-	{% endif %}
+       {% if passError is defined %}
+    <div class="alert alert-danger">{{ passError }}</div>
+{% endif %}
 
 	{{ form_row(registrationForm.agreeTerms) }}
 
