@@ -19,7 +19,7 @@ class Entreprise implements UserInterface, PasswordAuthenticatedUserInterface
     private ?int $id = null;
 
     #[ORM\Column(length: 180, unique: true)]
-    private string $email = '';
+    private ?string $email = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -28,7 +28,7 @@ class Entreprise implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    private string $password = '';
+    private ?string $password = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
@@ -67,7 +67,7 @@ class Entreprise implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ENTREPRISE';
 
         return array_unique($roles);
     }
@@ -103,15 +103,4 @@ class Entreprise implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function isVerified(): bool
-    {
-        return $this->isVerified;
-    }
-
-    public function setIsVerified(bool $isVerified): self
-    {
-        $this->isVerified = $isVerified;
-
-        return $this;
-    }
 }
