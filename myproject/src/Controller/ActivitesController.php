@@ -14,20 +14,22 @@ class ActivitesController extends AbstractController
 
     public function __construct()
     {
-        $this->listeNews = $this->loadFeed();        
+        $this->listeNews = $this->loadFeed();
     }
 
-    public function getListeNews(){
+    public function getListeNews()
+    {
         return $this->listeNews;
     }
 
-    private function loadFeed(){
+    private function loadFeed()
+    {
         $rss = new DOMDocument();
         $rss->load("https://www.lepilote.com/fr/piloterss/Disruptions");
-        
-        
+
+
         $feed = array();
-        foreach($rss->getElementsByTagName("item") as $key => $ligne){
+        foreach ($rss->getElementsByTagName("item") as $key => $ligne) {
             $item = [
                 'id' => $key,
                 'category' => $ligne->getElementsByTagName("category")[0]->nodeValue,
@@ -36,7 +38,12 @@ class ActivitesController extends AbstractController
                 'desc' => $ligne->getElementsByTagName("description")[0]->nodeValue,
                 'link' => $ligne->getElementsByTagName("link")[0]->nodeValue,
             ];
-            $feed[] = $item;
+            // Ajouter l'élément au tableau associatif de la catégorie correspondante
+            $category = $item['category'];
+            if (!isset($feed[$category])) {
+                $feed[$category] = array();
+            }
+            $feed[$category][] = $item;
         }
         return $feed;
     }

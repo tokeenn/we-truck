@@ -9,15 +9,19 @@
 </style>
 
  <h1>News :</h1>
-
-        {% for item in loadFeed %}
-           <div class="card"> 
-                <h2>{{ item.title }}</h2>
-                <h3>{{ item.category }}</h3>
-                <p>{{ item.desc }}</p>
-                <p>{{ item.date }}</p>
-                <p><a href="{{ item.link }}">{{ item.link }}</a></p>
+{% for category, items in loadFeed %}
+    <h2>{{ category }}</h2>
+    <div style=" display: grid; row-gap: 60px; grid-template-columns: 15fr 15fr 15fr; margin-right: 20px;">
+        {% for item in items %}
+            <div class="card" style=" padding: 3rem; margin: 3rem;">
+                <div class="card-body row"> 
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-text">{{ item.desc }}</p>
+                    <p class="card-text">{{ item.date }}</p>
+                    <a href="{{ item.link }}" class="btn btn-primary" style="width: 8rem">En savoir plus</a>
+                </div>
             </div>
-            <br>
         {% endfor %}
+    </div>
+{% endfor %}
 {% endblock %}
