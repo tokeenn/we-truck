@@ -10,14 +10,14 @@
 
  <h1>News :</h1>
 
-    <ul>
         {% for item in loadFeed %}
-            <li>{{ item.title }}</li>
-            <li>{{ item.category }}</li>
-            <li>{{ item.desc }}</li>
-            <li>{{ item.date }}</li>
-            <li><a href="{{ item.link }}">{{ item.link }}</a></li>
+           <div class="card"> 
+                <h2>{{ item.title }}</h2>
+                <h3>{{ item.category }}</h3>
+                <p>{{ item.desc }}</p>
+                <p>{{ item.date }}</p>
+                <p><a href="{{ item.link }}">{{ item.link }}</a></p>
+            </div>
             <br>
         {% endfor %}
-    </ul>
 {% endblock %}
