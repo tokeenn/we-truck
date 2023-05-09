@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use DOMDocument;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ActivitesController extends AbstractController
 {
@@ -32,14 +33,14 @@ class ActivitesController extends AbstractController
         foreach ($rss->getElementsByTagName("item") as $key => $ligne) {
             $item = [
                 'id' => $key,
-                'category' => $ligne->getElementsByTagName("category")[0]->nodeValue,
+                'categ' => $ligne->getElementsByTagName("category")[0]->nodeValue,
                 'title' => $ligne->getElementsByTagName("title")[0]->nodeValue,
                 'date' => $ligne->getElementsByTagName("pubDate")[0]->nodeValue,
                 'desc' => $ligne->getElementsByTagName("description")[0]->nodeValue,
                 'link' => $ligne->getElementsByTagName("link")[0]->nodeValue,
             ];
             // Ajouter l'élément au tableau associatif de la catégorie correspondante
-            $category = $item['category'];
+            $category = $item['categ'];
             if (!isset($feed[$category])) {
                 $feed[$category] = array();
             }
@@ -49,11 +50,14 @@ class ActivitesController extends AbstractController
     }
 
     #[Route('/activites', name: 'app_activites')]
-    public function index(): Response
+    public function index(Request $request ): Response
     {
+        $category = $request->query->get('category');
+
         return $this->render('activites/index.html.twig', [
             'controller_name' => 'ActivitesController',
             'loadFeed' => $this->loadFeed(),
+            'category' => $category,
         ]);
     }
 }

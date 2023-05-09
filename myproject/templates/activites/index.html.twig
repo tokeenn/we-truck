@@ -9,19 +9,56 @@
 </style>
 
  <h1>News :</h1>
-{% for category, items in loadFeed %}
+
+<br>
+
+{% if category is defined %}
+    <form action="{{ path('app_activites') }}" method="get">
+        <select name="category">
+            {% for category in loadFeed|keys %}
+                <option value="{{ category }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Rechercher</button>
+    </form>
+{% endif %}
+
+{% if category is defined %}
+{% if category == 'Infos trafic' %}
     <h2>{{ category }}</h2>
-    <div style=" display: grid; row-gap: 60px; grid-template-columns: 15fr 15fr 15fr; margin-right: 20px;">
-        {% for item in items %}
-            <div class="card" style=" padding: 3rem; margin: 3rem;">
-                <div class="card-body row"> 
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-text">{{ item.desc }}</p>
-                    <p class="card-text">{{ item.date }}</p>
-                    <a href="{{ item.link }}" class="btn btn-primary" style="width: 8rem">En savoir plus</a>
-                </div>
+    <div style="display: grid; row-gap: 60px; grid-template-columns: 15fr 15fr 15fr; margin-right: 20px;">
+        {% for item in loadFeed[category] %}
+        <div class="card" style=" padding: 3rem; margin: 3rem;">
+            <div class="card-body row"> 
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class="card-text">{{ item.desc }}</p>
+                <p class="card-text">{{ item.date }}</p>
+                <a href="{{ item.link }}" class="btn btn-primary" style="width: 8rem">En savoir plus</a>
             </div>
+        </div>
         {% endfor %}
     </div>
-{% endfor %}
+{% else %}
+{% for category, items in loadFeed %}
+        {% if category == 'Trafic transport en commun' %}
+            <h2>{{ category }}</h2>
+            <div style="display: grid; row-gap: 60px; grid-template-columns: 15fr 15fr 15fr; margin-right: 20px;">
+                {% for item in items %}
+                    {% if attribute(item, 'categ') == category %}
+                    <div class="card" style=" padding: 3rem; margin: 3rem;">
+                        <div class="card-body row"> 
+                            <h3 class="card-title">{{ item.title }}</h3>
+                            <p class="card-text">{{ item.desc }}</p>
+                            <p class="card-text">{{ item.date }}</p>
+                            <a href="{{ item.link }}" class="btn btn-primary" style="width: 8rem">En savoir plus</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+{% endif %}
+
 {% endblock %}
