@@ -1,4 +1,4 @@
-/* Reset CSS Navbar */
+/* Reset CSS Global */
 * {
     margin: 0;
     padding: 0;
@@ -52,7 +52,7 @@ nav .navs {
     width: 50%;
 }
 
-/* main menu navbar */
+/* menu principal de la navbar */
 nav .navbar-ul {
     display: block;
 
@@ -69,7 +69,7 @@ nav .navbar-ul a {
     text-transform: uppercase;
 }
 
-/* bouton menu */
+/* les deux boutons du menu */
 nav .button-ul-outer {
     display: none;
 }
@@ -98,7 +98,7 @@ nav .button-ul-inner li:hover a {
     color: white;
 }
 
-/* hamburger icon menu */
+/* l'icon hamburger du menu responsive téléphone */
 nav .inner-ham {
     display: flex;
     justify-content: flex-end;
@@ -118,7 +118,8 @@ nav .principal-ham {
     cursor: pointer;
 }
 
-/* Navbar styling for desktop version */
+/* Style de la navbar en mode desktop */
+/* J'ai fait démarrer à 992px parce que avant ça casse tous et que ça couvre téléphone et tablette */
 @media screen and (min-width:992px) {
     nav {
         padding: 1.2rem 3.5rem;
@@ -131,13 +132,13 @@ nav .principal-ham {
         margin-right: 2rem;
     }
 
-    /* main naviguation bar */
     nav .navAndLogo {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
 
+    /* Les deux navigations  */
     nav .navs {
         display: flex;
         flex-direction: row;
@@ -152,6 +153,7 @@ nav .principal-ham {
         transform: none !important;
     }
 
+    /* les liens de la naviguation */
     nav .navbar-ul {
         display: flex !important;
 
@@ -182,7 +184,7 @@ nav .principal-ham {
         animation: borderBottom .5s forwards;
     }
     
-    /* Button sign in and register of the nav */
+    /* les boutons espaces employé et espace entreprise de la nav */
     nav .button-ul-inner {
         display: none !important;
     }

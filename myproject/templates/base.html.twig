@@ -18,12 +18,15 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
     </head>
     <body>
+        {# Header de la page avec la navigation #}
         <header>
             <nav>
                 <div class="navAndLogo">
+                    {# Le logo de notre entreprise We truck. A changer si besoin dans le dossier image #}
                     <div id="brand"><a href="/"><img src="{{ asset('./assets/img/logo-wetruck.png') }}" alt="Logo of the brand we-truck"></a></div>
 
                     <div class="navs">
+                        {# Le menu hamburger pour fermer le menu responsive en mode téléphone #}
                         <div class="inner-ham">
                             <i class="fa-solid fa-xmark"></i>
                         </div>
@@ -35,6 +38,7 @@
                             <li><a href="#">Contact</a></li>
                         </ul>
 
+                        {# Les boutons espace employé et espace entreprise pour le menu mobile #}
                         <ul class="button-ul-inner">
                             <li><a href="#">Espace employé</a></li>
                             <li><a href="#">Espace entreprise</a></li>
@@ -42,11 +46,13 @@
                     </div>
                 </div>
         
+                {# Les boutons espace employé et espace entreprise pour le menu desktop #}
                 <ul class="button-ul-outer">
                     <li class="active"><a href="#">Espace employé</a></li>
                     <li><a href="#">Espace entreprise</a></li>
                 </ul>
 
+                {# le menu hamburger principal #}
                 <div class="principal-ham">
                     <i class="fa-solid fa-bars"></i>
                 </div>
