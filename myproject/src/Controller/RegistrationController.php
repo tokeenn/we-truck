@@ -28,6 +28,7 @@ class RegistrationController extends AbstractController
                 $form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()
             ) {
                 $user->setRoles(['ROLE_USER']);
+                
                
             
             // encode the plain password
