@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1dc2408aeb343b72ae902766a044bdc1",
+    "content-hash": "7b624fcfec5289e301833c06d8cc82d5",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1729,16 +1729,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.20.3",
+            "version": "1.20.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "6c04009f6cae6eda2f040745b6b846080ef069c2"
+                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/6c04009f6cae6eda2f040745b6b846080ef069c2",
-                "reference": "6c04009f6cae6eda2f040745b6b846080ef069c2",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
+                "reference": "7d568c87a9df9c5f7e8b5f075fc469aa8cb0a4cd",
                 "shasum": ""
             },
             "require": {
@@ -1768,9 +1768,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.20.3"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.20.4"
             },
-            "time": "2023-04-25T09:01:03+00:00"
+            "time": "2023-05-02T09:19:37+00:00"
         },
         {
             "name": "psr/cache",
@@ -6809,16 +6809,16 @@
         },
         {
             "name": "symfony/var-exporter",
-            "version": "v6.2.8",
+            "version": "v6.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-exporter.git",
-                "reference": "8302bb670204500d492c6b8c595ee9a27da62cd6"
+                "reference": "9a07920c2058bafee921ce4d90aeef2193837d63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/8302bb670204500d492c6b8c595ee9a27da62cd6",
-                "reference": "8302bb670204500d492c6b8c595ee9a27da62cd6",
+                "url": "https://api.github.com/repos/symfony/var-exporter/zipball/9a07920c2058bafee921ce4d90aeef2193837d63",
+                "reference": "9a07920c2058bafee921ce4d90aeef2193837d63",
                 "shasum": ""
             },
             "require": {
@@ -6863,7 +6863,7 @@
                 "serialize"
             ],
             "support": {
-                "source": "https://github.com/symfony/var-exporter/tree/v6.2.8"
+                "source": "https://github.com/symfony/var-exporter/tree/v6.2.10"
             },
             "funding": [
                 {
@@ -6879,7 +6879,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-14T15:48:45+00:00"
+            "time": "2023-04-21T08:33:05+00:00"
         },
         {
             "name": "symfony/web-link",
@@ -7040,6 +7040,103 @@
                 }
             ],
             "time": "2023-01-10T18:53:01+00:00"
+        },
+        {
+            "name": "symfonycasts/reset-password-bundle",
+            "version": "v1.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SymfonyCasts/reset-password-bundle.git",
+                "reference": "6601f15fce7a4934bc9570f76feaf1b93536b1a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SymfonyCasts/reset-password-bundle/zipball/6601f15fce7a4934bc9570f76feaf1b93536b1a7",
+                "reference": "6601f15fce7a4934bc9570f76feaf1b93536b1a7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2.5",
+                "symfony/config": "^5.4 | ^6.0",
+                "symfony/dependency-injection": "^5.4 | ^6.0",
+                "symfony/deprecation-contracts": "^2.2 | ^3.0",
+                "symfony/http-kernel": "^5.4 | ^6.0"
+            },
+            "conflict": {
+                "doctrine/orm": "<2.7",
+                "php": ">=8.1 <8.1.10"
+            },
+            "require-dev": {
+                "doctrine/annotations": "^1.0",
+                "doctrine/doctrine-bundle": "^2.0.3",
+                "doctrine/orm": "^2.7",
+                "symfony/framework-bundle": "^5.4 | ^6.0",
+                "symfony/phpunit-bridge": "^5.4 | ^6.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SymfonyCasts\\Bundle\\ResetPassword\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Symfony bundle that adds password reset functionality.",
+            "support": {
+                "issues": "https://github.com/SymfonyCasts/reset-password-bundle/issues",
+                "source": "https://github.com/SymfonyCasts/reset-password-bundle/tree/v1.17.0"
+            },
+            "time": "2023-02-02T15:11:33+00:00"
+        },
+        {
+            "name": "symfonycasts/verify-email-bundle",
+            "version": "v1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SymfonyCasts/verify-email-bundle.git",
+                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SymfonyCasts/verify-email-bundle/zipball/eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
+                "reference": "eb7bc997f36ad872a0d56bf209fe37fed148b0a7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2.5",
+                "symfony/config": "^5.4 | ^6.0",
+                "symfony/dependency-injection": "^5.4 | ^6.0",
+                "symfony/deprecation-contracts": "^2.2 | ^3.0",
+                "symfony/http-kernel": "^5.4 | ^6.0",
+                "symfony/routing": "^5.4 | ^6.0"
+            },
+            "require-dev": {
+                "doctrine/orm": "^2.7",
+                "doctrine/persistence": "^2.0",
+                "symfony/framework-bundle": "^5.4 | ^6.0",
+                "symfony/phpunit-bridge": "^5.4 | ^6.0",
+                "vimeo/psalm": "^4.3"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SymfonyCasts\\Bundle\\VerifyEmail\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple, stylish Email Verification for Symfony",
+            "support": {
+                "issues": "https://github.com/SymfonyCasts/verify-email-bundle/issues",
+                "source": "https://github.com/SymfonyCasts/verify-email-bundle/tree/v1.13.0"
+            },
+            "time": "2023-01-04T12:46:15+00:00"
         },
         {
             "name": "twig/extra-bundle",
@@ -9313,16 +9410,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v6.2.7",
+            "version": "v6.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "56965fae0b6b8d271015990eff5240ffff02e185"
+                "reference": "552950db2919421ad917e29e76d1999a2a31a8e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/56965fae0b6b8d271015990eff5240ffff02e185",
-                "reference": "56965fae0b6b8d271015990eff5240ffff02e185",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/552950db2919421ad917e29e76d1999a2a31a8e3",
+                "reference": "552950db2919421ad917e29e76d1999a2a31a8e3",
                 "shasum": ""
             },
             "require": {
@@ -9376,7 +9473,7 @@
             "description": "Provides utilities for PHPUnit, especially user deprecation notices management",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/phpunit-bridge/tree/v6.2.7"
+                "source": "https://github.com/symfony/phpunit-bridge/tree/v6.2.10"
             },
             "funding": [
                 {
@@ -9392,7 +9489,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-16T09:57:23+00:00"
+            "time": "2023-04-18T13:46:08+00:00"
         },
         {
             "name": "symfony/web-profiler-bundle",
