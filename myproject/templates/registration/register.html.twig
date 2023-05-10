@@ -32,6 +32,12 @@
 							<div class="form-group mb-3">
 								{{ form_label(registrationForm.plainPassword) }}
 								{{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+								{{ form_row(registrationForm.confirmPassword, {
+            'attr': {'class': 'form-control'}
+        }) }}
+		 {% if passError is defined %}
+		<div class="alert alert-danger" role="alert">{{ passError }}</div>
+	{% endif %}
 							</div>
 
 							<button type="submit" class="btn btn-primary">Valider</button>
