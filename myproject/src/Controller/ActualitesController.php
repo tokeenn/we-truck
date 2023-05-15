@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class ActivitesController extends AbstractController
+class ActualitesController extends AbstractController
 {
 
     private $listeNews;
@@ -49,7 +49,7 @@ class ActivitesController extends AbstractController
         return $feed;
     }
 
-    #[Route('/activites', name: 'app_activites')]
+    #[Route('/actualites', name: 'app_actualites')]
     public function index(Request $request ): Response
     {
         $category = $request->query->get('category');

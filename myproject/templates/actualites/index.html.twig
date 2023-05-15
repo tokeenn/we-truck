@@ -13,7 +13,7 @@
 <br>
 
 {% if category is defined %}
-    <form action="{{ path('app_activites') }}" method="get">
+    <form action="{{ path('app_actualites') }}" method="get">
         <select name="category" style="margin-left: 1rem">
             {% for category in loadFeed|keys %}
                 <option value="{{ category }}">{{ category }}</option>
@@ -45,19 +45,19 @@
     ...
     {% set num_pages = (loadFeed[category] | length + items_per_page - 1) / items_per_page | round(0, 'ceil') %}
     {% if page_number > 1 %}
-        <a href="{{ path('app_activites', {'category': category, 'page': page_number - 1}) }}" style="margin-left: 1rem">Précédent</a>
+        <a href="{{ path('app_actualites', {'category': category, 'page': page_number - 1}) }}" style="margin-left: 1rem">Précédent</a>
     {% endif %}
     {% if page_number < num_pages %}
-        <a href="{{ path('app_activites', {'category': category, 'page': page_number + 1}) }}" style="margin-left: 1rem">Suivant</a>
+        <a href="{{ path('app_actualites', {'category': category, 'page': page_number + 1}) }}" style="margin-left: 1rem">Suivant</a>
     {% endif %}
 {% else %}
     ...
     {% set num_pages = (items | length + items_per_page - 1) / items_per_page | round(0, 'ceil') %}
     {% if page_number > 1 %}
-        <a href="{{ path('app_activites', {'category': category, 'page': page_number - 1}) }}" style="margin-left: 1rem">Précédent</a>
+        <a href="{{ path('app_actualites', {'category': category, 'page': page_number - 1}) }}" style="margin-left: 1rem">Précédent</a>
     {% endif %}
     {% if page_number < num_pages %}
-        <a href="{{ path('app_activites', {'category': category, 'page': page_number + 1}) }}" style="margin-left: 1rem">Suivant</a>
+        <a href="{{ path('app_actualites', {'category': category, 'page': page_number + 1}) }}" style="margin-left: 1rem">Suivant</a>
     {% endif %}
 {% endif %}
 
