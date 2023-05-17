@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">{{ 'Inscription'|trans }}</div>
+					<div class="card-body">
+						<form method="post">
+							{{ form_start(Entreprise) }}
+							<div class="form-group mb-3">
+								{{ form_label(Entreprise.email) }}
+								{{ form_widget(Entreprise.email, {'attr': {'class': 'form-control'}}) }}
+							</div>
+							{# <div class="form-group mb-3">
+								{{ form_label(registrationForm.username) }}
+								{{ form_widget(registrationForm.username, {'attr': {'class': 'form-control'}}) }}
+							</div>
+							<div class="form-group mb-3">
+								{{ form_label(registrationForm.firstname) }}
+								{{ form_widget(registrationForm.firstname, {'attr': {'class': 'form-control'}}) }}
+							</div>
+							<div class="form-group mb-3">
+								{{ form_label(registrationForm.lastname) }}
+								{{ form_widget(registrationForm.lastname, {'attr': {'class': 'form-control'}}) }}
+							</div> #}
+							<div class="form-group mb-3">
+								{{ form_label(Entreprise.plainPassword) }}
+								{{ form_widget(Entreprise.plainPassword, {'attr': {'class': 'form-control'}}) }}
+								{{ form_row(Entreprise.confirmPassword, {
+            'attr': {'class': 'form-control'}
+        }) }}
+		 {% if passError is defined %}
+		<div class="alert alert-danger" role="alert">{{ passError }}</div>
+	{% endif %}
+							</div>
+
+							<button type="submit" class="btn btn-primary">Valider</button>
+							{{ form_end(Entreprise) }}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
